@@ -1,36 +1,87 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Nexo Digital Portfolio 🌐✨
 
-## Getting Started
+> **Glow & Glass Design System** implementation for a high-performance portfolio.
 
-First, run the development server:
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
+![Next.js](https://img.shields.io/badge/Next.js-15.0-black)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind-4.0-cyan)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## 🎨 Overview
+
+This portfolio is a showcase of modern web development techniques, featuring a **Glassmorphism** and **Neon** aesthetic. It is built with performance and user experience in mind, utilizing the latest frontend technologies.
+
+### Key Features
+- **Glassmorphism UI**: Frosted glass effects using backdrop-filter.
+- **Neon Accents**: Vibrant glowing elements and gradients.
+- **Responsive Design**: Mobile-first approach with fluid layouts.
+- **Interactive Gallery**: Custom modal gallery with vertical scrolling.
+- **WhatsApp Integration**: Direct messaging capability via API.
+- **Optimized Performance**: Next.js App Router and server-side rendering.
+
+## 🛠️ Technology Stack
+
+- **Framework**: [Next.js 15](https://nextjs.org/) (App Router)
+- **Styling**: [Tailwind CSS v4](https://tailwindcss.com/)
+- **Animations**: [Framer Motion](https://www.framer.com/motion/)
+- **Icons**: [Lucide React](https://lucide.dev/)
+- **Deployment**: Vercel / Netlify / Render (Ready)
+
+## 🚀 Getting Started
+
+### Prerequisites
+- Node.js 18+
+- npm or yarn
+
+### Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/bps2414/portfoliobps.git
+   cd portfoliobps
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Run the development server**
+   ```bash
+   npm run dev
+   ```
+
+4. **Open your browser**
+   Navigate to [http://localhost:3000](http://localhost:3000)
+
+## 📂 Project Structure
+
+```
+src/
+├── app/              # Next.js App Router pages
+│   ├── about/        # About page
+│   ├── contact/      # Contact page with form
+│   ├── projects/     # Projects showcase
+│   ├── layout.tsx    # Root layout
+│   └── page.tsx      # Home page
+├── components/       # Reusable React components
+│   ├── layout/       # Header, Footer, etc.
+│   └── ui/           # Buttons, Cards, GlassContainers
+└── lib/              # Utilities and helper functions
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🛡️ Security & Performance
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Security**: No sensitive data in client-side code. Inputs sanitized.
+- **Performance**: Images optimized with Next/Image. Code splitting enabled.
+- **SEO**: Meta tags configured for social sharing.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 👤 Author
 
-## Learn More
+**Bryan Souza**
+- 📧 [bryanpsouza123@gmail.com](mailto:bryanpsouza123@gmail.com)
+- 💼 [Nexo Digital](https://nexodigital.dev)
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Built with ❤️ using **Next.js** and **Tailwind CSS**.

@@ -1,65 +1,142 @@
-import Image from "next/image";
+"use client";
+
+import Link from "next/link";
+import { ArrowRight, Code, Layout, Smartphone, ChevronRight, Github } from "lucide-react";
+import { Button } from "@/components/ui/Button";
+import { GlassContainer } from "@/components/ui/GlassContainer";
+import { Header } from "@/components/layout/Header";
+import { Footer } from "@/components/layout/Footer";
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+    <div className="min-h-screen flex flex-col bg-background relative overflow-hidden">
+      {/* Ambient Background Glows */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-primary/20 rounded-full blur-[120px] -z-10 opacity-50" />
+      <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-blue-500/10 rounded-full blur-[100px] -z-10 opacity-30" />
+
+      <Header />
+
+      <main className="flex-grow">
+        {/* Hero Section */}
+        <section className="container mx-auto px-6 pt-32 pb-20 flex flex-col items-center text-center relative">
+          <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-10 -z-10" />
+
+          <span className="inline-block py-1 px-3 rounded-full bg-white/5 border border-white/10 text-primary text-sm font-medium mb-6 glass">
+            Desenvolvedor Web & UI Designer
+          </span>
+
+          <h1 className="text-5xl md:text-7xl font-bold mb-6 tracking-tight">
+            Criando Experiências <br />
+            <span className="text-glow text-transparent bg-clip-text bg-gradient-to-r from-primary to-orange-300">
+              Digitais Imersivas
+            </span>
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+
+          <p className="text-xl text-white/60 max-w-2xl mb-10 leading-relaxed">
+            Transformo ideias em aplicações web de alta performance com design premium e foco na experiência do usuário.
           </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+
+          <div className="flex gap-4">
+            <Button size="lg" className="shadow-[0_0_30px_-10px_var(--color-primary)]" href="/projects">
+              Ver Projetos <ArrowRight className="ml-2 w-4 h-4" />
+            </Button>
+            <Button variant="secondary" size="lg" href="/contact">
+              Entre em Contato
+            </Button>
+          </div>
+        </section>
+
+        {/* Skills Preview */}
+        <section className="py-20 border-t border-white/5 bg-white/2">
+          <div className="container mx-auto px-6">
+            <p className="text-center text-sm font-semibold text-white/40 uppercase tracking-widest mb-12">
+              Minha Stack Tecnológica
+            </p>
+            <div className="flex flex-wrap justify-center gap-8 md:gap-16 opacity-70 grayscale hover:grayscale-0 transition-all duration-500">
+              {["Next.js", "React", "TypeScript", "Tailwind CSS", "Framer Motion", "Stitch"].map(tech => (
+                <span key={tech} className="text-xl md:text-2xl font-bold text-white/80 hover:text-primary transition-colors cursor-default">
+                  {tech}
+                </span>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Featured Projects Preview */}
+        <section className="py-24 container mx-auto px-6">
+          <div className="flex justify-between items-end mb-12">
+            <div>
+              <h2 className="text-3xl md:text-4xl font-bold mb-2">Projetos em Destaque</h2>
+              <p className="text-white/60">Uma seleção dos meus melhores trabalhos.</p>
+            </div>
+            <div className="hidden md:block">
+              <Button variant="ghost" className="gap-2 text-primary hover:text-primary/80" href="/projects">
+                Ver Todos <ChevronRight className="w-4 h-4" />
+              </Button>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {/* Project 1 */}
+            <GlassContainer className="group cursor-pointer" hoverEffect>
+              <Link href="/projects" className="block h-full">
+                <div className="h-48 bg-zinc-900 flex items-center justify-center relative overflow-hidden rounded-t-xl">
+                  <img
+                    src="/projects/restaurante/home1.png"
+                    alt="Restaurante Sabor & Arte"
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors duration-500" />
+                </div>
+                <div className="p-8">
+                  <h3 className="text-2xl font-bold mb-2 group-hover:text-primary transition-colors">
+                    Restaurante Sabor & Arte
+                  </h3>
+                  <p className="text-white/60 mb-4">
+                    Landing page imersiva com sistema de reservas e cardápio digital.
+                  </p>
+                  <span className="text-sm text-primary font-medium flex items-center gap-1">
+                    Ver detalhes <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
+                  </span>
+                </div>
+              </Link>
+            </GlassContainer>
+
+            {/* Project 2 */}
+            <GlassContainer className="group cursor-pointer" hoverEffect>
+              <Link href="/projects" className="block h-full">
+                <div className="h-48 bg-zinc-900 flex items-center justify-center relative overflow-hidden rounded-t-xl">
+                  <img
+                    src="/projects/lampiao/home1.png"
+                    alt="Lampião Burguer"
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors duration-500" />
+                </div>
+                <div className="p-8">
+                  <h3 className="text-2xl font-bold mb-2 group-hover:text-primary transition-colors">
+                    Lampião Burguer
+                  </h3>
+                  <p className="text-white/60 mb-4">
+                    App de delivery completo com painel administrativo e gestão de pedidos.
+                  </p>
+                  <span className="text-sm text-primary font-medium flex items-center gap-1">
+                    Ver detalhes <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
+                  </span>
+                </div>
+              </Link>
+            </GlassContainer>
+          </div>
+
+          <div className="mt-8 text-center md:hidden">
+            <Button variant="ghost" className="gap-2 text-primary" href="/projects">
+              Ver Todos os Projetos <ChevronRight className="w-4 h-4" />
+            </Button>
+          </div>
+        </section>
       </main>
+
+      <Footer />
     </div>
   );
 }
