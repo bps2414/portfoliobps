@@ -1,0 +1,558 @@
+[
+  {
+    "id": "TC001",
+    "title": "Navigate from Home to Projects via header link",
+    "description": "Verifies that the Projects header link routes to the Projects page and shows Projects content.",
+    "category": "Navigation",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/\""
+      },
+      {
+        "type": "action",
+        "description": "Click on \"Projects\" link"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/projects\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify page title contains \"Projects\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Projects\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC002",
+    "title": "Navigate from Home to About via header link",
+    "description": "Verifies that the About header link routes to the About page and shows About content.",
+    "category": "Navigation",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"header navigation\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Click on \"About\" link"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/about\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify page title contains \"About\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"About\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC003",
+    "title": "Navigate from Home to Contact via header link",
+    "description": "Verifies that the Contact header link routes to the Contact page and shows the contact form section.",
+    "category": "Navigation",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"header navigation\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Click on \"Contact\" link"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/contact\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify page title contains \"Contact\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Contact\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC004",
+    "title": "Navigate back to Home from another page via header Home link",
+    "description": "Verifies that the Home header link routes back to the homepage from an internal page.",
+    "category": "Navigation",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Click on \"Projects\" link"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/projects\""
+      },
+      {
+        "type": "action",
+        "description": "Click on \"Home\" link"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Nexo\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC005",
+    "title": "Header navigation is consistently visible and usable after route changes",
+    "description": "Verifies the header navigation remains visible and allows continued navigation after changing pages.",
+    "category": "Navigation",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"header navigation\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Click on \"About\" link"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"header navigation\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Click on \"Contact\" link"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"header navigation\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/contact\""
+      }
+    ]
+  },
+  {
+    "id": "TC006",
+    "title": "Projects navigation works after scrolling the Home page",
+    "description": "Verifies that scrolling does not prevent the user from using the header navigation to reach Projects.",
+    "category": "Navigation",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Scroll to the bottom of the page"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"header navigation\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Click on \"Projects\" link"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/projects\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Projects\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC007",
+    "title": "Project card click does not break navigation or page state",
+    "description": "Verifies that clicking a project card (if it is clickable) does not cause a blank page, error state, or unexpected navigation.",
+    "category": "Projects Display",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /projects"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"project card\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Click on a visible project card"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"project content\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Projects\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC008",
+    "title": "If a project detail modal/expanded view opens, it is visible and dismissible",
+    "description": "Verifies that a project detail modal or expanded view appears after clicking a card and can be closed to return to the list.",
+    "category": "Projects Display",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /projects"
+      },
+      {
+        "type": "action",
+        "description": "Click on a visible project card"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"project detail modal or expanded view\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Press Escape"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"project detail modal or expanded view\" is not visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"project card\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC009",
+    "title": "Fast scrolling keeps animations smooth and content still appears",
+    "description": "Verifies that quick scrolling through the projects list still results in visible project cards and active animations without missing content.",
+    "category": "Projects Display",
+    "priority": "Low",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /projects"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"project card\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Scroll down quickly toward the bottom of the projects list"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"project card\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Scroll back up quickly toward the top of the projects list"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Projects\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC010",
+    "title": "Projects page content renders without empty-state or obvious error text",
+    "description": "Verifies that the /projects page renders expected content and does not show an empty or error-like message during normal use.",
+    "category": "Projects Display",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /projects"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/projects\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Projects\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"project card\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Scroll down to reveal additional project cards"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"project card\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC011",
+    "title": "Submit contact form successfully with valid inputs",
+    "description": "Verifies a visitor can submit the contact form with valid name, email, and message and see a success confirmation.",
+    "category": "Contact Form",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /contact"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Contact\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Type \"Alex Johnson\" into the name field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"alex.johnson@example.com\" into the email field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"Hello! I’d like to get in touch about a project inquiry.\" into the message field"
+      },
+      {
+        "type": "action",
+        "description": "Click the Send button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"success\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC012",
+    "title": "Show validation error for invalid email format",
+    "description": "Verifies the form blocks submission and shows an email validation error when the email format is invalid.",
+    "category": "Contact Form",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /contact"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Contact\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Type \"Sam Rivera\" into the name field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"sam.rivera@invalid\" into the email field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"Testing email validation handling.\" into the message field"
+      },
+      {
+        "type": "action",
+        "description": "Click the Send button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"email\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"valid\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC013",
+    "title": "Required-field validation when name is missing",
+    "description": "Verifies the form shows a required-field error when the name is left empty and Send is clicked.",
+    "category": "Contact Form",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /contact"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Contact\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Type \"jordan.taylor@example.com\" into the email field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"Message provided while name is missing.\" into the message field"
+      },
+      {
+        "type": "action",
+        "description": "Click the Send button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Name\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"required\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC014",
+    "title": "Required-field validation when message is missing",
+    "description": "Verifies the form shows a required-field error when the message is left empty and Send is clicked.",
+    "category": "Contact Form",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /contact"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Contact\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Type \"Taylor Morgan\" into the name field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"taylor.morgan@example.com\" into the email field"
+      },
+      {
+        "type": "action",
+        "description": "Click the Send button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Message\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"required\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC015",
+    "title": "Multiple required-field errors when name and message are both empty",
+    "description": "Verifies the form surfaces required-field errors for multiple empty fields when attempting to submit.",
+    "category": "Contact Form",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /contact"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Contact\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Type \"casey.lee@example.com\" into the email field"
+      },
+      {
+        "type": "action",
+        "description": "Click the Send button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Name\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Message\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"required\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC016",
+    "title": "Prevent duplicate submission while feedback is displayed",
+    "description": "Verifies the UI prevents or clearly handles repeated clicks on Send during the submission/feedback state.",
+    "category": "Contact Form",
+    "priority": "Low",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /contact"
+      },
+      {
+        "type": "action",
+        "description": "Type \"Jamie Patel\" into the name field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"jamie.patel@example.com\" into the email field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"Testing repeated Send clicks handling.\" into the message field"
+      },
+      {
+        "type": "action",
+        "description": "Click the Send button"
+      },
+      {
+        "type": "action",
+        "description": "Click the Send button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Sending\" is visible"
+      }
+    ]
+  }
+]

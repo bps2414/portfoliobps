@@ -1,0 +1,17 @@
+{
+  "status": "commited",
+  "type": "frontend",
+  "scope": "codebase",
+  "localEndpoint": "http://localhost:3000",
+  "executionArgs": {
+    "projectName": "nexo-portfolio",
+    "projectPath": "f:\\VSCode\\portfolio stitch\\nexo-portfolio",
+    "testIds": [],
+    "additionalInstruction": "Verify fixes for contact form validation, loading states, and anchor navigation. Check that clicking 'Projetos' scrolls to the projects section. Verify email validation error messages and success message after submission.",
+    "envs": {
+      "API_KEY": "sk-user-J-YJhNkjFRB4Z1fFk8l98ZPDCMly_ADj9u0Dz9SmQQVCp_d_Fm93B2IN76hjHwpm50FqWIL1VadKgOatuL57tPAOvGox4SzqOiuYjuUdm-MNc9yc2jhBOJCDXGFDZZNo0Zg"
+    }
+  },
+  "serverPort": 57337,
+  "proxy": "http://35547953-ef0d-42e4-91ff-93726d3a66da:JpyskLL2vwwqssmvQuzqjftvKhPvYRZE@tun.testsprite.com:8080"
+}

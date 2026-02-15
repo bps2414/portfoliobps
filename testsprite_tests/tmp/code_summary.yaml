@@ -1,0 +1,62 @@
+version: "2"
+type: frontend
+tech_stack:
+  - TypeScript
+  - Next.js 15
+  - Tailwind CSS
+  - Framer Motion
+  - Lucide React
+routes:
+  - path: /
+    file: src/app/page.tsx
+    auth_required: false
+    description: Homepage with hero and intro
+  - path: /about
+    file: src/app/about/page.tsx
+    auth_required: false
+    description: About me page
+  - path: /projects
+    file: src/app/projects/page.tsx
+    auth_required: false
+    description: Projects showcase page
+  - path: /contact
+    file: src/app/contact/page.tsx
+    auth_required: false
+    description: Contact page with form
+features:
+  - name: Navigation
+    description: Main site navigation between pages
+    files:
+      - src/app/layout.tsx
+      - src/components/layout/Navbar.tsx
+    entry_route: /
+    user_interactions:
+      - Click on Home link
+      - Click on About link
+      - Click on Projects link
+      - Click on Contact link
+    api_calls: []
+    auth_required: false
+  - name: Projects Display
+    description: Showcase of portfolio projects
+    files:
+      - src/app/projects/page.tsx
+    entry_route: /projects
+    user_interactions:
+      - Scroll through projects
+      - hover on project cards
+    api_calls: []
+    auth_required: false
+  - name: Contact Form
+    description: Contact form for user inquiries
+    files:
+      - src/app/contact/page.tsx
+    entry_route: /contact
+    user_interactions:
+      - Fill name field
+      - Fill email field
+      - Fill message field
+      - Click Send button
+    api_calls: []
+    auth_required: false
+known_limitations: []

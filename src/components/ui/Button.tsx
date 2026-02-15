@@ -33,6 +33,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
                     href={href}
                     target={target}
                     className={styles}
+                    // eslint-disable-next-line @typescript-eslint/no-explicit-any
                     {...(props as any)}
                 >
                     {props.children}

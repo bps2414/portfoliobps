@@ -1,13 +1,59 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
-import { ArrowLeft, Mail, MapPin, Phone, Send } from "lucide-react";
+import { ArrowLeft, Mail, MapPin, Phone, Send, Loader2, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { GlassContainer } from "@/components/ui/GlassContainer";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 
 export default function Contact() {
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [isSuccess, setIsSuccess] = useState(false);
+    const [emailError, setEmailError] = useState("");
+
+    const validateEmail = (email: string) => {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    };
+
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        const form = e.target as HTMLFormElement;
+        const nameInput = form.elements.namedItem('name') as HTMLInputElement;
+        const emailInput = form.elements.namedItem('email') as HTMLInputElement;
+        const messageInput = form.elements.namedItem('message') as HTMLTextAreaElement;
+
+        const name = nameInput.value;
+        const email = emailInput.value;
+        const message = messageInput.value;
+
+        // Validation
+        if (!validateEmail(email)) {
+            setEmailError("Por favor, insira um email válido.");
+            return;
+        }
+        setEmailError("");
+
+        setIsSubmitting(true);
+        setIsSuccess(false);
+
+        // Simulate network delay for better UX
+        await new Promise(resolve => setTimeout(resolve, 1500));
+
+        const text = `Olá, meu nome é ${name}. Meu email é ${email}. ${message}`;
+        const encodedText = encodeURIComponent(text);
+
+        window.open(`https://wa.me/5521987783382?text=${encodedText}`, '_blank');
+
+        setIsSubmitting(false);
+        setIsSuccess(true);
+        form.reset();
+
+        // Hide success message after 5 seconds
+        setTimeout(() => setIsSuccess(false), 5000);
+    };
+
     return (
         <div className="min-h-screen flex flex-col bg-background relative">
             <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[120px] -z-10" />
@@ -65,19 +111,7 @@ export default function Contact() {
 
                         <GlassContainer className="p-8 h-fit">
                             <h2 className="text-2xl font-bold mb-6">Envie uma mensagem</h2>
-                            <form
-                                className="space-y-4"
-                                onSubmit={(e) => {
-                                    e.preventDefault();
-                                    const form = e.target as HTMLFormElement;
-                                    const name = (form.elements.namedItem('name') as HTMLInputElement).value;
-                                    const message = (form.elements.namedItem('message') as HTMLTextAreaElement).value;
-
-                                    const text = `Olá, meu nome é ${name}. ${message}`;
-                                    const encodedText = encodeURIComponent(text);
-                                    window.open(`https://wa.me/5521987783382?text=${encodedText}`, '_blank');
-                                }}
-                            >
+                            <form className="space-y-4" onSubmit={handleSubmit} noValidate>
                                 <div className="space-y-2">
                                     <label htmlFor="name" className="text-sm font-medium text-white/70">Nome</label>
                                     <input
@@ -96,9 +130,13 @@ export default function Contact() {
                                         type="email"
                                         id="email"
                                         name="email"
-                                        className="w-full bg-black/30 border border-white/10 rounded-lg p-3 text-white focus:outline-none focus:border-primary/50 transition-colors"
+                                        className={`w-full bg-black/30 border rounded-lg p-3 text-white focus:outline-none transition-colors ${emailError ? "border-red-500 focus:border-red-500" : "border-white/10 focus:border-primary/50"
+                                            }`}
                                         placeholder="seu@email.com"
+                                        required
+                                        onChange={() => setEmailError("")}
                                     />
+                                    {emailError && <p className="text-red-500 text-xs mt-1">{emailError}</p>}
                                 </div>
 
                                 <div className="space-y-2">
@@ -113,9 +151,26 @@ export default function Contact() {
                                     />
                                 </div>
 
-                                <Button type="submit" className="w-full gap-2 mt-2 cursor-pointer">
-                                    Enviar Mensagem <Send className="w-4 h-4" />
+                                <Button
+                                    type="submit"
+                                    className="w-full gap-2 mt-2 cursor-pointer"
+                                    disabled={isSubmitting}
+                                >
+                                    {isSubmitting ? (
+                                        <>Enviando... <Loader2 className="w-4 h-4 animate-spin" /></>
+                                    ) : isSuccess ? (
+                                        <>Mensagem Enviada! <CheckCircle className="w-4 h-4" /></>
+                                    ) : (
+                                        <>Enviar Mensagem <Send className="w-4 h-4" /></>
+                                    )}
                                 </Button>
+
+                                {isSuccess && (
+                                    <div className="bg-green-500/10 border border-green-500/20 rounded-lg p-3 mt-4 flex items-center gap-2 text-green-400 text-sm animate-in fade-in slide-in-from-bottom-2">
+                                        <CheckCircle className="w-4 h-4 shrink-0" />
+                                        <p>Sucesso! A conversa será aberta no WhatsApp.</p>
+                                    </div>
+                                )}
                             </form>
                         </GlassContainer>
                     </div>

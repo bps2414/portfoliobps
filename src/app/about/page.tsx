@@ -24,7 +24,7 @@ export default function About() {
                     </Link>
                     <h1 className="text-4xl md:text-5xl font-bold mb-4">Sobre Mim</h1>
                     <p className="text-xl text-white/60 max-w-2xl">
-                        Mais que código, crio experiências. Bem-vindo ao meu mundo "Vibecode".
+                        Mais que código, crio experiências. Bem-vindo ao meu mundo &quot;Vibecode&quot;.
                     </p>
                 </div>
 
@@ -40,7 +40,7 @@ export default function About() {
                                     Não sou apenas um desenvolvedor; sou um criador apaixonado. Minha jornada não começou em salas de aula tradicionais, mas na curiosidade insaciável de entender como as coisas funcionam na web.
                                 </p>
                                 <p>
-                                    Adoto o estilo <strong>"Vibecode"</strong>: programar não é apenas lógica, é fluxo, é arte e é resolver problemas reais com criatividade. Sou autodidata, movido a desafios e constantemente explorando novas tecnologias para tirar ideias do papel.
+                                    Adoto o estilo <strong>&quot;Vibecode&quot;</strong>: programar não é apenas lógica, é fluxo, é arte e é resolver problemas reais com criatividade. Sou autodidata, movido a desafios e constantemente explorando novas tecnologias para tirar ideias do papel.
                                 </p>
                                 <p>
                                     Meu foco é entregar aplicações que não apenas funcionam, mas que encantam. Seja um sistema de delivery complexo ou uma landing page imersiva, coloco minha energia em cada detalhe, do pixel perfect ao código limpo.

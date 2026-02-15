@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight, Code, Layout, Smartphone, ChevronRight, Github } from "lucide-react";
+import Image from "next/image";
+import { ArrowRight, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { GlassContainer } from "@/components/ui/GlassContainer";
 import { Header } from "@/components/layout/Header";
@@ -63,7 +64,7 @@ export default function Home() {
         </section>
 
         {/* Featured Projects Preview */}
-        <section className="py-24 container mx-auto px-6">
+        <section id="projects" className="py-24 container mx-auto px-6">
           <div className="flex justify-between items-end mb-12">
             <div>
               <h2 className="text-3xl md:text-4xl font-bold mb-2">Projetos em Destaque</h2>
@@ -81,10 +82,11 @@ export default function Home() {
             <GlassContainer className="group cursor-pointer" hoverEffect>
               <Link href="/projects" className="block h-full">
                 <div className="h-48 bg-zinc-900 flex items-center justify-center relative overflow-hidden rounded-t-xl">
-                  <img
+                  <Image
                     src="/projects/restaurante/home1.png"
                     alt="Restaurante Sabor & Arte"
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors duration-500" />
                 </div>
@@ -106,10 +108,11 @@ export default function Home() {
             <GlassContainer className="group cursor-pointer" hoverEffect>
               <Link href="/projects" className="block h-full">
                 <div className="h-48 bg-zinc-900 flex items-center justify-center relative overflow-hidden rounded-t-xl">
-                  <img
+                  <Image
                     src="/projects/lampiao/home1.png"
                     alt="Lampião Burguer"
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors duration-500" />
                 </div>

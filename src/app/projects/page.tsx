@@ -121,11 +121,14 @@ export default function Projects() {
                                 className="h-64 relative bg-zinc-900 flex items-center justify-center overflow-hidden cursor-pointer group-hover:brightness-110 transition-all"
                             >
                                 {/* Project Cover Image */}
-                                <img
-                                    src={project.coverImage}
-                                    alt={project.title}
-                                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                                />
+                                <div className="absolute inset-0">
+                                    <Image
+                                        src={project.coverImage}
+                                        alt={project.title}
+                                        fill
+                                        className="object-cover transition-transform duration-700 group-hover:scale-105"
+                                    />
+                                </div>
 
                                 {/* Subtle Overlay for depth */}
                                 <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors duration-500" />
@@ -193,9 +196,9 @@ export default function Projects() {
                                 {/* Left Column: Gallery */}
                                 <div className="lg:w-2/3 flex flex-col border-r border-white/10 bg-zinc-900/50">
                                     {/* Main Image Viewport using custom-scrollbar */}
-                                    <div className="flex-grow relative overflow-y-auto custom-scrollbar">
+                                    <div className="flex-grow relative overflow-y-auto custom-scrollbar bg-black/50">
                                         {selectedProject.screenshots.length > 0 ? (
-                                            <div className="relative min-h-full">
+                                            <div className="relative w-full h-full min-h-[50vh] flex items-center justify-center">
                                                 {/* Navigation Arrows (Absolute) */}
                                                 <button
                                                     onClick={prevImage}
@@ -210,19 +213,14 @@ export default function Projects() {
                                                     <ChevronRight className="w-6 h-6" />
                                                 </button>
 
-                                                <img
-                                                    src={selectedProject.screenshots[currentImageIndex].src}
-                                                    alt={selectedProject.screenshots[currentImageIndex].title}
-                                                    className="w-full h-auto object-cover"
-                                                    onError={(e) => {
-                                                        e.currentTarget.style.display = 'none';
-                                                        e.currentTarget.parentElement?.querySelector('.fallback')?.classList.remove('hidden');
-                                                    }}
-                                                />
-                                                <div className="fallback hidden absolute inset-0 flex flex-col items-center justify-center text-white/50 pt-20">
-                                                    <ImageIcon className="w-16 h-16 mb-4" />
-                                                    <p>Imagem não encontrada: {selectedProject.screenshots[currentImageIndex].src}</p>
-                                                    <p className="text-sm">(Adicione o arquivo na pasta public)</p>
+                                                <div className="relative w-full h-full">
+                                                    <Image
+                                                        src={selectedProject.screenshots[currentImageIndex].src}
+                                                        alt={selectedProject.screenshots[currentImageIndex].title}
+                                                        fill
+                                                        className="object-contain"
+                                                        priority
+                                                    />
                                                 </div>
                                             </div>
                                         ) : (
@@ -243,10 +241,11 @@ export default function Projects() {
                                                     currentImageIndex === idx ? "border-primary opacity-100" : "border-transparent opacity-50 hover:opacity-80"
                                                 )}
                                             >
-                                                <img
+                                                <Image
                                                     src={shot.src}
                                                     alt={shot.title}
-                                                    className="w-full h-full object-cover"
+                                                    fill
+                                                    className="object-cover"
                                                 />
                                             </button>
                                         ))}
