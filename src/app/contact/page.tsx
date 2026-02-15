@@ -21,10 +21,12 @@ export default function Contact() {
         e.preventDefault();
         const form = e.target as HTMLFormElement;
         const nameInput = form.elements.namedItem('name') as HTMLInputElement;
+        const restaurantNameInput = form.elements.namedItem('restaurantName') as HTMLInputElement;
         const emailInput = form.elements.namedItem('email') as HTMLInputElement;
         const messageInput = form.elements.namedItem('message') as HTMLTextAreaElement;
 
         const name = nameInput.value;
+        const restaurantName = restaurantNameInput.value;
         const email = emailInput.value;
         const message = messageInput.value;
 
@@ -41,7 +43,7 @@ export default function Contact() {
         // Simulate network delay for better UX
         await new Promise(resolve => setTimeout(resolve, 1500));
 
-        const text = `Olá, meu nome é ${name}. Meu email é ${email}. ${message}`;
+        const text = `Olá, meu nome é ${name}, do restaurante ${restaurantName}. Meu email é ${email}. ${message}`;
         const encodedText = encodeURIComponent(text);
 
         window.open(`https://wa.me/5521987783382?text=${encodedText}`, '_blank');
@@ -120,6 +122,18 @@ export default function Contact() {
                                         name="name"
                                         className="w-full bg-black/30 border border-white/10 rounded-lg p-3 text-white focus:outline-none focus:border-primary/50 transition-colors"
                                         placeholder="Seu nome"
+                                        required
+                                    />
+                                </div>
+
+                                <div className="space-y-2">
+                                    <label htmlFor="restaurantName" className="text-sm font-medium text-white/70">Nome do Restaurante</label>
+                                    <input
+                                        type="text"
+                                        id="restaurantName"
+                                        name="restaurantName"
+                                        className="w-full bg-black/30 border border-white/10 rounded-lg p-3 text-white focus:outline-none focus:border-primary/50 transition-colors"
+                                        placeholder="Nome do seu estabelecimento"
                                         required
                                     />
                                 </div>

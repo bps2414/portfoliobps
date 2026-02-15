@@ -118,7 +118,7 @@ export default function Projects() {
                             {/* Project Header / Preview Area */}
                             <div
                                 onClick={() => openGallery(project)}
-                                className="h-64 relative bg-zinc-900 flex items-center justify-center overflow-hidden cursor-pointer group-hover:brightness-110 transition-all"
+                                className="h-64 relative bg-zinc-900 overflow-hidden cursor-pointer group-hover:brightness-110 transition-all"
                             >
                                 {/* Project Cover Image */}
                                 <div className="absolute inset-0">
@@ -198,28 +198,30 @@ export default function Projects() {
                                     {/* Main Image Viewport using custom-scrollbar */}
                                     <div className="flex-grow relative overflow-y-auto custom-scrollbar bg-black/50">
                                         {selectedProject.screenshots.length > 0 ? (
-                                            <div className="relative w-full h-full min-h-[50vh] flex items-center justify-center">
-                                                {/* Navigation Arrows (Absolute) */}
+                                            <div className="relative w-full min-h-full bg-black/50">
+                                                {/* Navigation Arrows (Fixed/Sticky) */}
                                                 <button
                                                     onClick={prevImage}
-                                                    className="absolute top-1/2 left-4 z-20 p-3 rounded-full bg-black/50 hover:bg-primary/80 text-white transition-all backdrop-blur-md border border-white/10 shadow-lg -translate-y-1/2"
+                                                    className="fixed top-1/2 left-4 z-20 p-3 rounded-full bg-black/50 hover:bg-primary/80 text-white transition-all backdrop-blur-md border border-white/10 shadow-lg -translate-y-1/2 lg:absolute lg:left-4"
                                                 >
                                                     <ChevronLeft className="w-6 h-6" />
                                                 </button>
                                                 <button
                                                     onClick={nextImage}
-                                                    className="absolute top-1/2 right-4 z-20 p-3 rounded-full bg-black/50 hover:bg-primary/80 text-white transition-all backdrop-blur-md border border-white/10 shadow-lg -translate-y-1/2"
+                                                    className="fixed top-1/2 right-4 z-20 p-3 rounded-full bg-black/50 hover:bg-primary/80 text-white transition-all backdrop-blur-md border border-white/10 shadow-lg -translate-y-1/2 lg:absolute lg:right-8 lg:mr-0 mr-[33%] md:mr-[33%]"
                                                 >
                                                     <ChevronRight className="w-6 h-6" />
                                                 </button>
 
-                                                <div className="relative w-full h-full">
+                                                <div className="w-full">
                                                     <Image
                                                         src={selectedProject.screenshots[currentImageIndex].src}
                                                         alt={selectedProject.screenshots[currentImageIndex].title}
-                                                        fill
-                                                        className="object-contain"
+                                                        width={1920}
+                                                        height={1080}
+                                                        className="w-full h-auto"
                                                         priority
+                                                        quality={100}
                                                     />
                                                 </div>
                                             </div>
