@@ -15,7 +15,7 @@ export function GlassContainer({
     return (
         <div
             className={cn(
-                "backdrop-blur-md bg-white/5 border border-white/10 rounded-2xl shadow-lg",
+                "backdrop-blur-md bg-white/5 border border-white/10 rounded-2xl shadow-lg will-change-transform",
                 hoverEffect && "hover:bg-white/10 transition-colors duration-300",
                 className
             )}

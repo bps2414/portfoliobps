@@ -26,7 +26,7 @@ export default function Home() {
             Desenvolvedor Web & UI Designer
           </span>
 
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 tracking-tight">
+          <h1 className="text-4xl md:text-7xl font-bold mb-6 tracking-tight">
             Criando Experiências <br />
             <span className="text-glow text-transparent bg-clip-text bg-gradient-to-r from-primary to-orange-300">
               Digitais Imersivas

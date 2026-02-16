@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { ArrowLeft, ExternalLink, X, ChevronLeft, ChevronRight, ImageIcon } from "lucide-react";
+import { ArrowLeft, ExternalLink, X, ChevronLeft, ChevronRight, ImageIcon, Server, Store } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { GlassContainer } from "@/components/ui/GlassContainer";
 import { Header } from "@/components/layout/Header";
@@ -10,67 +10,8 @@ import { Footer } from "@/components/layout/Footer";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { motion, AnimatePresence } from "framer-motion";
-
-interface Project {
-    title: string;
-    desc: string;
-    tags: string[];
-    imageColor: string;
-    link: string;
-    coverImage: string;
-    screenshots: { title: string; src: string }[];
-    techDetails: {
-        frontend: string;
-        backend: string;
-        database: string;
-        infra: string;
-    };
-}
-
-const projects: Project[] = [
-    {
-        title: "Restaurante Sabor & Arte",
-        desc: "Landing page para restaurante com sistema de reservas integrado, cardápio digital e design imersivo.",
-        tags: ["HTML5", "CSS3", "JavaScript", "Node.js", "Express"],
-        imageColor: "from-green-500/20 to-green-900/20",
-        link: "https://restaurante-5qze.onrender.com/",
-        coverImage: "/projects/restaurante/home1.png",
-        screenshots: [
-            { title: "Home Page", src: "/projects/restaurante/home.png" },
-            { title: "Menu Digital", src: "/projects/restaurante/menu.png" },
-            { title: "Sistema de Reservas", src: "/projects/restaurante/about.png" },
-            { title: "Contato", src: "/projects/restaurante/contact.png" },
-            { title: "Admin Panel", src: "/projects/restaurante/admin.png" },
-        ],
-        techDetails: {
-            frontend: "HTML5 Semântico, CSS3 (Vanilla), JavaScript (ES6+), Design Mobile-first",
-            backend: "Node.js + TypeScript, Express.js, JWT, Zod Validation",
-            database: "Prisma ORM (SQL), Cloudinary (Uploads)",
-            infra: "Docker, Security Headers (Helmet, CORS)"
-        }
-    },
-    {
-        title: "Lampião Burguer",
-        desc: "Aplicação completa de delivery com painel administrativo, gestão de pedidos em tempo real e integração com WhatsApp.",
-        tags: ["Node.js", "TypeScript", "Prisma", "Docker"],
-        imageColor: "from-red-500/20 to-red-900/20",
-        link: "https://lampiaoburguer.onrender.com",
-        coverImage: "/projects/lampiao/home1.png",
-        screenshots: [
-            { title: "Home Page", src: "/projects/lampiao/home.png" },
-            { title: "Menu Interativo", src: "/projects/lampiao/menu.png" },
-            { title: "Admin Dashboard", src: "/projects/lampiao/admin.png" },
-            { title: "Sobre", src: "/projects/lampiao/about.png" },
-            { title: "Contato", src: "/projects/lampiao/contact.png" },
-        ],
-        techDetails: {
-            frontend: "HTML5 Semântico, CSS3 (Vanilla), JavaScript (ES6+), Design Mobile-first",
-            backend: "Node.js + TypeScript, Express.js, JWT, Zod Validation",
-            database: "Prisma ORM (SQL), Cloudinary (Uploads)",
-            infra: "Docker, Security Headers (Helmet, CORS)"
-        }
-    }
-];
+import { projects } from "@/data/projects";
+import { type Project } from "@/types";
 
 export default function Projects() {
     const [selectedProject, setSelectedProject] = useState<Project | null>(null);
@@ -120,15 +61,21 @@ export default function Projects() {
                                 onClick={() => openGallery(project)}
                                 className="h-64 relative bg-zinc-900 overflow-hidden cursor-pointer group-hover:brightness-110 transition-all"
                             >
-                                {/* Project Cover Image */}
-                                <div className="absolute inset-0">
-                                    <Image
-                                        src={project.coverImage}
-                                        alt={project.title}
-                                        fill
-                                        className="object-cover transition-transform duration-700 group-hover:scale-105"
-                                    />
-                                </div>
+                                {project.coverImage ? (
+                                    <div className="absolute inset-0">
+                                        <Image
+                                            src={project.coverImage}
+                                            alt={project.title}
+                                            fill
+                                            className="object-cover transition-transform duration-700 group-hover:scale-105"
+                                        />
+                                    </div>
+                                ) : (
+                                    <div className={cn("absolute inset-0 flex items-center justify-center transition-transform duration-700 group-hover:scale-105", project.gradient)}>
+                                        {project.icon === "Server" && <Server className="w-16 h-16 text-white/20 group-hover:text-white/40 transition-colors" />}
+                                        {project.icon === "Store" && <Store className="w-16 h-16 text-white/20 group-hover:text-white/40 transition-colors" />}
+                                    </div>
+                                )}
 
                                 {/* Subtle Overlay for depth */}
                                 <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors duration-500" />
@@ -208,7 +155,7 @@ export default function Projects() {
                                                 </button>
                                                 <button
                                                     onClick={nextImage}
-                                                    className="fixed top-1/2 right-4 z-20 p-3 rounded-full bg-black/50 hover:bg-primary/80 text-white transition-all backdrop-blur-md border border-white/10 shadow-lg -translate-y-1/2 lg:absolute lg:right-8 lg:mr-0 mr-[33%] md:mr-[33%]"
+                                                    className="fixed top-1/2 right-4 z-20 p-3 rounded-full bg-black/50 hover:bg-primary/80 text-white transition-all backdrop-blur-md border border-white/10 shadow-lg -translate-y-1/2 lg:absolute lg:right-8"
                                                 >
                                                     <ChevronRight className="w-6 h-6" />
                                                 </button>
